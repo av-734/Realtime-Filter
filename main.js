@@ -1,38 +1,49 @@
-var noseX="";
-var noseY="";
-function preload(){
-    clown_filter=loadImage('https://i.postimg.cc/7ZBcjDqp/clownnose.png');
+mustacheX=0;
+mustacheY=0;
+
+function preload()
+{
+mustache=loadImage('https://i.postimg.cc/3x3QzSGq/m.png');
 }
 
-function setup(){
-    canvas=createCanvas(300,300);
-    canvas.center();
-    video=createCapture(VIDEO);
-    video.hide();
-    video.size(300,300);
-    poseNet=ml5.poseNet(video,modelloaded);
-    poseNet.on('pose',gotposes);
+function setup()
+{
+canvas=createCanvas(400,400);
+canvas.center();
+
+video=createCapture(VIDEO);
+video.size(400,400);
+video.hide();
+
+posenet=ml5.poseNet(video,modelloaded);
+posenet.on('pose',gotPoses);
 }
 
-function gotposes(results){
-    if(results.length>0){
-        console.log(results);
-        noseX=results[0].pose.nose.x-15;
-        noseY=results[0].pose.nose.y-15;
-    }
+
+function gotPoses(results)
+{
+if(results.length>0)
+{
+    console.log(results);
+    mustacheX=results[0].pose.nose.x-30;
+    mustacheY=results[0].pose.nose.y+9;
+}
 }
 
-function draw(){
-    image(video,0,0,300,300);
-    console.log("noseX="+noseX+" , noseY="+noseY);
-    image(clown_filter,noseX,noseY,30,30);
-    //image(clown_filter,10,10,30,30);
+
+function modelloaded()
+{
+console.log("posenet loaded!!");
 }
 
-function takesnapshot(){
-    save('dhruv.png');
+
+function draw()
+{
+image(video,0,0,400,400);
+image(mustache,mustacheX,mustacheY,60,35);
 }
 
-function modelloaded(){
-    console.log("poseNet is loaded");
+function save_screenshot()
+{
+    save('filter.png');
 }

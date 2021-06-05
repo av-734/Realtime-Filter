@@ -1,23 +1,19 @@
-label{
-    font-size: 25px !important;
-    margin-top: 20px;
+.heading{
+    font-size: 23px;
+    font-family: 'Special Elite', cursive;
+    letter-spacing: 3px;
 }
+
 canvas{
-    border: 1px solid black ;
-    animation-name: example;
-    animation-duration: 8s;
+    border-radius: 20px;
+    animation-name:shadow;
+    animation-duration: 5s;
     animation-iteration-count: infinite;
 }
 
-@keyframes example{
-    0%{box-shadow: 5px 5px 40px red;}
-    25%{box-shadow: 5px 5px 40px yellow;}
-    50%{box-shadow: 5px 5px 40px magenta;}
-    75%{box-shadow: 5px 5px 40px blue;}
-    100%{box-shadow: 5px 5px 40px green;}
-
-}
-.btn-success:hover{
-    background-color: red;
-    border: 1px solid black;
+@keyframes shadow{
+    0%{box-shadow: 5px 5px 40px rgb(28, 155, 16);}
+    45%{box-shadow: 5px 5px 40px rgb(255, 0, 21);}
+    75%{box-shadow: 5px 5px 40px rgb(7, 18, 165);}
+    100%{box-shadow: 5px 5px 40px rgb(109, 3, 119);}
 }
